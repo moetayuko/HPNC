@@ -1,0 +1,54 @@
+out_dir: results/hpnc_dec
+custom_metrics:
+  - accuracy
+  - nmi
+  - ari
+dataset:
+  format: PyG
+  name: Cora
+  task: node
+  task_type: classification
+  pre_transform: norm_feat
+train:
+  eval_period: 100
+  ckpt_period: 100
+  skip_train_eval: true
+  mode: train_hpnc
+model:
+  type: hpnc
+  loss_fun: sce
+gae:
+  decoder:
+    layer_type: custom_gatconv
+graphmae:
+  mask_rate: 0.5
+  replace_rate: 0.05
+hpnc:
+  backbone: graphmae
+  clu_loss: dec
+  clu_coeff: 0.047857871726592734
+  fea_rec_loss: sce
+  fea_rec_coeff: 1.0
+  bal_loss: bal_rim
+  bal_coeff: 0.00822122656839711
+  edge_rec_loss: edge_bce
+  edge_rec_coeff: 0.0
+gnn:
+  layers_mp: 2
+  dim_inner: 128
+  layer_type: custom_gatconv
+  stage_type: gat_stack
+  batchnorm: false
+  act: prelu
+  in_drop: 0.2  # pre-dropout
+  att_drop: 0.1  # attention coefficients dropout
+  dropout: 0.0  # post-dropout
+  l2norm: false
+  att_heads: 4
+sce:
+  power: 3.0
+optim:
+  optimizer: adam
+  base_lr: 0.001
+  max_epoch: 2000
+  weight_decay: 0.0001
