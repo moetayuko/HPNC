@@ -2,6 +2,18 @@
 
 This is the official implementation of our TMLR paper _Hyperspherical Prototype Node Clustering_.
 
+```bibtex
+@article{
+lu2024hyperspherical,
+title={Hyperspherical Prototype Node Clustering},
+author={Jitao Lu and Danyang Wu and Feiping Nie and Rong Wang and Xuelong Li},
+journal={Transactions on Machine Learning Research},
+issn={2835-8856},
+year={2024},
+url={https://openreview.net/forum?id=z3ZlnaOM0d},
+}
+```
+
 ## Prepare Environment
 
 ```bash
